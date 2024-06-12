@@ -7,8 +7,24 @@
   font-family: pixelFont;
   src: url(/font-family/pixelFont.ttf);
 }
+#default-setting {
+  min-height: 100vh;
+  background-color: bisque;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#default-setting h1 {
+  font-size: 24px;
+}
+.welcome {
+  font-size: 12px;
+}
+
 #game-container {
   display: block;
+  
 }
 #background-image {
   position: relative;
