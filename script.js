@@ -2,7 +2,7 @@ const storyData = [
   {
     sceneId: "1",
     sceneDetails: { 
-      sceneImage: "scene image",
+      sceneImage: "images/background/backgroundImage1.jpg",
       storyText: "some story text",
       name: "character name",
       characterIcon: "character Icon",
@@ -65,13 +65,15 @@ function displayScene(scene) {
   // Add scene details to the div
   sceneDiv.innerHTML = `
   <div id="game-container">
-    <img>${scene.sceneDetails.sceneImage}
+    <img id="background-image">${scene.sceneDetails.sceneImage}
+    <img id="character-icon">${scene.sceneDetails.characterIcon}
     </div>
-    <p>Story Text: ${scene.sceneDetails.storyText}</p>
-    <p>Character Name: ${scene.sceneDetails.name}</p>
-    <p>Character Icon: ${scene.sceneDetails.characterIcon}</p>
-    <p>Choice 1: ${scene.sceneDetails.option.choice1}</p>
-    <p>Choice 2: ${scene.sceneDetails.option.choice2}</p>
+  <div id="textbox">
+    <h2>${scene.sceneDetails.name}</h2>
+    <p>${scene.sceneDetails.storyText}</p>
+    <p>${scene.sceneDetails.option.choice1}</p>
+    <p>${scene.sceneDetails.option.choice2}</p>
+    </div>
   `;
 
   // Append the div to the document body

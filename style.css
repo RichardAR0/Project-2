@@ -1,22 +1,26 @@
-#scene {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: pixelFont;
+}
+@font-face {
+  font-family: pixelFont;
+  src: url(/font-family/pixelFont.ttf);
+}
+#game-container {
+  display: block;
+}
+#background-image {
+  position: relative;
+  background-color: lightpink;
+  height: 30rem;
+}
+#character-icon {
+  position: absolute;
+  background-color: lightblue;
+  height: 20rem;
 }
 
-#scene-image {
-  max-width: 100%;
-}
-
-#options {
-  margin-top: 20px;
-}
-
-button {
-  margin: 5px;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.scene-test {
+#textbox {
   background-color: aqua;
-  height: 20px;
 }
