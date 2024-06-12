@@ -58,10 +58,33 @@ function displayScene(scene) {
   console.log("Choice 2:", scene.sceneDetails.option.choice2);
 }
 
+function displayScene(scene) {
+  // Create a div element for the scene
+  const sceneDiv = document.createElement("div");
+
+  // Add scene details to the div
+  sceneDiv.innerHTML = `
+  <div id="game-container">
+    <img>${scene.sceneDetails.sceneImage}
+    </div>
+    <p>Story Text: ${scene.sceneDetails.storyText}</p>
+    <p>Character Name: ${scene.sceneDetails.name}</p>
+    <p>Character Icon: ${scene.sceneDetails.characterIcon}</p>
+    <p>Choice 1: ${scene.sceneDetails.option.choice1}</p>
+    <p>Choice 2: ${scene.sceneDetails.option.choice2}</p>
+  `;
+
+  // Append the div to the document body
+  document.body.appendChild(sceneDiv);
+}
+
+
 //The loop to show the storyData of each nested object in the array
   for(let i = 0; i < storyData.length; i++){
-    displayScene(storyData[i]);
+    //Create a div element here
   }
+
+
 // Space bar to skip dialogue
 document.addEventListener('keydown', function(event) {
   if (event.key === ' ') {
@@ -74,7 +97,18 @@ document.addEventListener('keydown', function(event) {
       //Displays on the console the number of an array
       console.log(currentSceneIndex); 
       
+      if (currentSceneIndex === 2){
+        console.log('you find a key');
+      };
+
     }}
 });
+// Key 'R' resets the scene to the begging
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'r')
+    currentSceneIndex = -1
+});
+//create a div element to show it up on the page, one by one
+//style it with the CSS
+//create an interaction with the buttons
 
- 
