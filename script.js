@@ -46,24 +46,21 @@ const storyData = [
 let currentSceneIndex = -1; //Track the current scene
 let currentScene = storyData.length
 
-
 //The test of appearing in the console 
-function displayScene(scene) {
-  console.log("Scene ID:", scene.sceneId);
-  console.log("Scene Image:", scene.sceneDetails.sceneImage);
-  console.log("Story Text:", scene.sceneDetails.storyText);
-  console.log("Character Name:", scene.sceneDetails.name);
-  console.log("Character Icon:", scene.sceneDetails.characterIcon);
-  console.log("Choice 1:", scene.sceneDetails.option.choice1);
-  console.log("Choice 2:", scene.sceneDetails.option.choice2);
-}
+
 
 function displayScene(scene) {
+  const previousSceneDiv = document.getElementById("scene-container");
+  if (document.getElementById(`scene-${scene.sceneId}`)) {// Adjust the delay as needed
+    return; // Skip displaying the scene if it's already displayed
+  }
+ 
   // Create a div element for the scene
   const sceneDiv = document.createElement("div");
-
+  sceneDiv.id = "scene-container";
   // Add scene details to the div
   sceneDiv.innerHTML = `
+  <div id="whole-game">
   <div id="game-container">
     <img id="background-image">${scene.sceneDetails.sceneImage}
     <img id="character-icon">${scene.sceneDetails.characterIcon}
@@ -73,6 +70,7 @@ function displayScene(scene) {
     <p>${scene.sceneDetails.storyText}</p>
     <p>${scene.sceneDetails.option.choice1}</p>
     <p>${scene.sceneDetails.option.choice2}</p>
+    </div>
     </div>
   `;
 
@@ -86,31 +84,46 @@ function displayScene(scene) {
     //Create a div element here
   }
 
+  function startButton() {
+      document.getElementById("default-setting").style.display = "none";
+      startGame();
+      const spaceKeyEvent = new KeyboardEvent('keydown', { key: ' ' });
+    document.dispatchEvent(spaceKeyEvent);
+  };
 
-// Space bar to skip dialogue
-document.addEventListener('keydown', function(event) {
-  if (event.key === ' ') {
-    // Spacebar: Continue the scene
-    if (currentSceneIndex < storyData.length - 1) {
-      currentSceneIndex++; // Move to the next scene
-      const currentScene = storyData[currentSceneIndex];
-      displayScene(currentScene);   
 
-      //Displays on the console the number of an array
-      console.log(currentSceneIndex); 
-      
-      if (currentSceneIndex === 2){
-        console.log('you find a key');
-      };
+  function startGame(){
+    // Space bar to skip dialogue
+    document.addEventListener('keydown', function(event) {
+      if (event.key === ' ') {
+        // Spacebar: Continue the scene
+        if (currentSceneIndex < storyData.length - 1) {
+          currentSceneIndex++; // Move to the next scene
+          const currentScene = storyData[currentSceneIndex];
+          displayScene(currentScene);   
+          //Displays on the console the number of an array
+          console.log(currentSceneIndex); 
 
-    }}
-});
+          //Win condition
+          if (currentSceneIndex === 2){
+            console.log('you find a key');
+          };
+        }}
+    });
+  };
+
 // Key 'R' resets the scene to the begging
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'r')
-    currentSceneIndex = -1
+document.addEventListener("keydown", function(event) {
+  if (event.key === 'r') {
+    location.reload();
+  }
 });
+
 //create a div element to show it up on the page, one by one
 //style it with the CSS
 //create an interaction with the buttons
 
+/*
+for (let i = 0; i < storyData[i].length; i++) {
+  console.log(array[i]);
+}*/
