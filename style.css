@@ -36,9 +36,6 @@ html, body {
   min-height: 100vh;
   background-color: aqua;
 }
-#game-container {
-
-}
 #background-image {
   position: relative;
   height: 30rem;

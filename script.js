@@ -119,11 +119,4 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
-//create a div element to show it up on the page, one by one
-//style it with the CSS
-//create an interaction with the buttons
-
-/*
-for (let i = 0; i < storyData[i].length; i++) {
-  console.log(array[i]);
-}*/
+//create the winning condition
